@@ -5,7 +5,7 @@ export interface ISearchResult {
     detail_url: string;
 }
   
-type TSpecCategory = Record<string, string>;
+export type TSpecCategory = Record<string, string>;
   
 export interface IPhoneDetails {
     brand: string;
@@ -15,7 +15,7 @@ export interface IPhoneDetails {
     dimensions: string;
     os: string;
     storage: string;
-    specifications: TSpecCategory;
+    specifications: Record<string, TSpecCategory>;
 }
   
 export interface IBrandDetails {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import { IBrandDetails, IPhoneDetails, IPhoneListItem, ISearchResult, TSpecCategory } from '../types';
+import { IPhoneListItem, ISearchResult } from '../types';
 import { baseUrl } from '../server';
 
 export async function getHtml(url: string): Promise<string> {
@@ -95,8 +95,10 @@ export class ParserService {
   async getTopByFans(): Promise<IPhoneListItem[]> {
     return this._parseStatsTable('By total favorites');
   }
+
   async search(query: string): Promise<ISearchResult[]> {
-    const html = await getHtml(`${baseUrl}/results.php3?sSearch=${query}`);
+    const html = await getHtml(`${baseUrl}/results.php3?sQuickSearch=yes&sName=${query}`);
+    console.log(`${baseUrl}/results.php3?sQuickSearch=yes&sName=${query}`)
     const $ = cheerio.load(html);
     const phones: ISearchResult[] = [];
 
@@ -111,7 +113,7 @@ export class ParserService {
         });
       }
     });
-
+    //console.log(phones)
     return phones;
   }
 
